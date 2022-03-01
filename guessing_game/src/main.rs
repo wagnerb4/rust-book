@@ -9,7 +9,7 @@ fn main() {
     println!("Welcome to the guessing game.");
 
     let random_number: u32 = rng.gen_range(1..=100);
-    println!("Your random number is {}.", random_number);
+    // println!("Your random number is {}.", random_number); // DEBUG
 
     loop {
         println!("Please enter your guess.");
