@@ -18,23 +18,15 @@ fn main() {
             .read_line(&mut user_input)
             .expect("Your input couldn't be read.");
 
-        println!("Your input was: {}", user_input);
-        let user_input_parsed: u32;
-
-        match user_input.trim().parse() {
-            Result::Ok(value) => {
-                if value < 1 || value > 100 {
-                    println!("Pleas enter a number between 1 and 100.");
-                }
-                user_input_parsed = value;
-            }
+        let user_input: u32 = match user_input.trim().parse() {
+            Result::Ok(value) => value,
             Result::Err(_) => {
                 println!("Please enter a number. You entered '{}'.", user_input);
                 continue;
             }
         };
 
-        match user_input_parsed.cmp(&random_number) {
+        match user_input.cmp(&random_number) {
             Ordering::Less => println!("enter a higher number"),
             Ordering::Greater => println!("enter a smaller number"),
             Ordering::Equal => {
